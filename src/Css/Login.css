@@ -1,0 +1,8 @@
+/* Ketika memasuki layar HP */
+@media only screen and (min-width: 300px) {
+  /* styles for browsers larger than 960px; */
+  .container {
+    margin: 10px;
+    width: 100% !important;
+  }
+}

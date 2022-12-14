@@ -1,13 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// require("dotenv").config();
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./Pages/Login";
+import UserProvider from "./Stores/UserProvider";
+import Home from "./Pages/Home";
+import IsLogin from "./Middleware/IsLogin";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <UserProvider>
+        <Routes>
+          <Route
+            path="/home"
+            element={
+              <IsLogin>
+                <Home />
+              </IsLogin>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
