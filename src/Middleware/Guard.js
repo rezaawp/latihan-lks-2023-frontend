@@ -1,11 +1,12 @@
 import { useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import User from "../Stores/User";
 
-const IsLogin = ({ children }) => {
+const Guard = ({ children }) => {
   const navigate = useNavigate();
-  const dataUser = useContext(User);
-  const token = localStorage.getItem("ssid_login") === undefined ? '' : localStorage.getItem("ssid_login");
+  const token =
+    localStorage.getItem("ssid_login") === undefined
+      ? ""
+      : localStorage.getItem("ssid_login");
 
   const checkToken = async () => {
     let res = await fetch(`${process.env.REACT_APP_API_KEY_AUTH}/me`, {
@@ -18,8 +19,8 @@ const IsLogin = ({ children }) => {
 
     res = await res.json();
 
-    if (res.status === 401) {
-      navigate("/login");
+    if (res.status === 200) {
+      navigate("/home");
     }
   };
 
@@ -30,4 +31,4 @@ const IsLogin = ({ children }) => {
   return children;
 };
 
-export default IsLogin;
+export default Guard;

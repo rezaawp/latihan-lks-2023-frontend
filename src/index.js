@@ -7,8 +7,9 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Pages/Login";
 import UserProvider from "./Stores/UserProvider";
-import Home from "./Pages/Home";
+import Pollings from "./Pages/Pollings";
 import IsLogin from "./Middleware/IsLogin";
+import Guard from "./Middleware/Guard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,14 +18,21 @@ root.render(
       <UserProvider>
         <Routes>
           <Route
-            path="/home"
+            path="/pollings"
             element={
               <IsLogin>
-                <Home />
+                <Pollings />
               </IsLogin>
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <Guard>
+                <Login />
+              </Guard>
+            }
+          />
         </Routes>
       </UserProvider>
     </BrowserRouter>
