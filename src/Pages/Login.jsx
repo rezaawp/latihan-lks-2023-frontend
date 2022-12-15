@@ -1,9 +1,6 @@
-// import "../Css/Login.css";
-// require("dotenv").config();
-
 import React, { useState, useContext } from "react";
-import { BallTriangle, Blocks } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "../Components/Loading";
 import User from "../Stores/User";
 
 const Login = (props) => {
@@ -47,30 +44,7 @@ const Login = (props) => {
 
   return (
     <>
-      {loading && (
-        <div
-          className="container d-flex align-items-center justify-content-center"
-          style={{
-            zIndex: 1,
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            width: "100% !important",
-            height: "100%",
-          }}
-        >
-          <Blocks
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-          />
-        </div>
-      )}
+      {loading && <Loading />}
       <div
         className="container my-5 border border-1 rounded p-4"
         style={{ marginTop: "100px !important", width: "26rem" }}

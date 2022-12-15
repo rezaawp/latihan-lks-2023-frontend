@@ -10,6 +10,7 @@ import UserProvider from "./Stores/UserProvider";
 import Pollings from "./Pages/Pollings";
 import IsLogin from "./Middleware/IsLogin";
 import Guard from "./Middleware/Guard";
+import CreatePolling from "./Pages/CreatePolling";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -33,6 +34,8 @@ root.render(
               </Guard>
             }
           />
+
+          <Route path="/create" element={<CreatePolling />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>
