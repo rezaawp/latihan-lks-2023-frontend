@@ -6,6 +6,10 @@ const CreatePolling = () => {
   const [deadline, setDeadline] = useState("");
   const [choises, setChoises] = useState();
   const [loading, setLoading] = useState(false);
+  const token =
+    localStorage.getItem("ssid_login") === undefined
+      ? ""
+      : localStorage.getItem("ssid_login");
 
   const changeChoises = (e) => {
     const array = e.target.value.split("\n");
@@ -18,28 +22,25 @@ const CreatePolling = () => {
     let res = await fetch(`${process.env.REACT_APP_API_KEY_V1}/poll`, {
       method: "POST",
       headers: {
-        Referer: "http://localhost:8000/",
-        "Access-Control-Allow-Origin": "*",
-        Authorization:
-          localStorage.getItem("ssid_login") == undefined
-            ? ""
-            : localStorage.getItem("ssid_login"),
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        Accept: "*/*",
+        Accept: "application/json",
       },
-      body: {
+      body: JSON.stringify({
         title,
         description: desc,
         deadline,
         choises,
-      },
+      }),
     });
 
     res = res.json();
     setLoading(false);
-
-    if (res.status === 200) {
-    }
+    res.then((res) => {
+      if (res.status === 200) {
+        console.log("OK");
+      }
+    });
   };
 
   return (
