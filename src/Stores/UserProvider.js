@@ -6,6 +6,10 @@ const UserProvider = (props) => {
   const data = {
     user,
     token: localStorage.getItem("ssid_login"),
+    headersApi: {
+      Authorization: `Bearer ${localStorage.getItem("ssid_login")}`,
+      'Content-Type': `application/json`
+    }
   };
 
   const loginHandler = (token) => {

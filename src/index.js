@@ -35,6 +35,10 @@ root.render(
             }
           />
 
+          <Route 
+            path="/polling/:uuid"
+          />
+
           <Route path="/create" element={<CreatePolling />} />
         </Routes>
       </UserProvider>

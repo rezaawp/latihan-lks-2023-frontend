@@ -4,7 +4,7 @@ const Navbar = (props) => {
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Navbar
+            Pollings
           </a>
           <button
             className="navbar-toggler"
@@ -26,16 +26,8 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Features
+                  Votes
                 </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
               </li>
             </ul>
           </div>
