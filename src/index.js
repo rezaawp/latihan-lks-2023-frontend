@@ -11,6 +11,7 @@ import Pollings from "./Pages/Pollings";
 import IsLogin from "./Middleware/IsLogin";
 import Guard from "./Middleware/Guard";
 import CreatePolling from "./Pages/CreatePolling";
+import Polling from "./Pages/Polling";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -35,9 +36,7 @@ root.render(
             }
           />
 
-          <Route 
-            path="/polling/:uuid"
-          />
+          <Route path="/polling/:uuid" element={<Polling />} />
 
           <Route path="/create" element={<CreatePolling />} />
         </Routes>

@@ -26,7 +26,7 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Votes
+                  Create Post
                 </a>
               </li>
             </ul>
