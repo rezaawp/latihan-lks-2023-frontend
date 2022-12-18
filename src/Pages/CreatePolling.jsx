@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Loading from "../Components/Loading";
+import SuccesPost from "../Components/SuccesPost";
 
 const CreatePolling = () => {
   const [title, setTitle] = useState("");
@@ -6,6 +8,7 @@ const CreatePolling = () => {
   const [deadline, setDeadline] = useState("");
   const [choises, setChoises] = useState();
   const [loading, setLoading] = useState(false);
+  const [succesCreate, setSuccessCreate] = useState(false);
   const token =
     localStorage.getItem("ssid_login") === undefined
       ? ""
@@ -19,6 +22,7 @@ const CreatePolling = () => {
 
   const submit = async (e) => {
     setLoading(true);
+    setSuccessCreate(false);
     let res = await fetch(`${process.env.REACT_APP_API_KEY_V1}/poll`, {
       method: "POST",
       headers: {
@@ -35,16 +39,20 @@ const CreatePolling = () => {
     });
 
     res = res.json();
-    setLoading(false);
     res.then((res) => {
       if (res.status === 200) {
+        setLoading(false);
         console.log("OK");
+        setSuccessCreate(true);
       }
     });
   };
 
   return (
     <>
+      {loading && <Loading />}
+      
+      {succesCreate && <SuccesPost />}
       <div
         className="container border border-1 mt-4 rounded"
         style={{ width: "28rem" }}
