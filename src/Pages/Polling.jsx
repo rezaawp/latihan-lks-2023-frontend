@@ -83,7 +83,7 @@ const Polling = (props) => {
               return (
                 <div className="form-check" key={i}>
                   <input
-                    className="form-check-input"
+                    className="form-check-input ms-0"
                     type="radio"
                     name="flexRadioDefault"
                     id={i}
@@ -93,7 +93,7 @@ const Polling = (props) => {
                       console.log(`Anda memilih id = ${e.target.value}`);
                     }}
                   />
-                  <label className="form-check-label" htmlFor={i}>
+                  <label className="form-check-label ms-2" htmlFor={i}>
                     {choise.choise_name}
                   </label>
                 </div>

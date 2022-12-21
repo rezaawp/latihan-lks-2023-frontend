@@ -61,15 +61,9 @@ const Pollings = (props) => {
                   <div className="container-fluid d-flex justify-content-center mb-2">
                     <span>{poll.description}</span>
                   </div>
-                  <p>Choises : </p>
-                  <ul>
-                    <li>Choise 1</li>
-                    <li>Choise 1</li>
-                    <li>Choise 1</li>
-                    <li>More</li>
-                  </ul>
 
-                  <div className="d-flex justify-content-end p-1">
+                  <div className="d-flex justify-content-between p-1 mt-5">
+                    <span>Deadline : {poll.deadline}</span>
                     <button
                       className="btn btn-primary btn-sm"
                       value={poll.id}
