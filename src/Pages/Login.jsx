@@ -30,11 +30,13 @@ const Login = (props) => {
       "ssid_login",
       res.data.access_token
     );
-    console.log({ localStorage: setLocalStorage, response: res });
     setLoading(false);
 
     if (res.status === 200) {
-      return navigate("/home");
+      dataUser.setDataUser(res.data.user.name);
+      console.log({ user: res.data.user });
+      console.log({ context: dataUser.data_user });
+      return navigate("/create");
     }
   };
 

@@ -1,5 +1,5 @@
 // require("dotenv").config();
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -12,36 +12,18 @@ import IsLogin from "./Middleware/IsLogin";
 import Guard from "./Middleware/Guard";
 import CreatePolling from "./Pages/CreatePolling";
 import Polling from "./Pages/Polling";
+import { create, login, polling, pollings, profile } from "./Routes/web";
+import Profile from "./Pages/Profile";
+import User from "./Stores/User";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <Routes>
-          <Route
-            path="/pollings"
-            element={
-              <IsLogin>
-                <Pollings />
-              </IsLogin>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <Guard>
-                <Login />
-              </Guard>
-            }
-          />
-
-          <Route path="/polling/:uuid" element={<Polling />} />
-
-          <Route path="/create" element={<CreatePolling />} />
-        </Routes>
-      </UserProvider>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </UserProvider>
   </React.StrictMode>
 );
 

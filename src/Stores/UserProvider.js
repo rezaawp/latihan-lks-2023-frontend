@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import User from "./User";
 
 const UserProvider = (props) => {
-  const [user, setUser] = useState({});
-  const data = {
-    user,
-    token: localStorage.getItem("ssid_login"),
-    headersApi: {
-      Authorization: `Bearer ${localStorage.getItem("ssid_login")}`,
-      'Content-Type': `application/json`
-    }
-  };
+  const [dataUser, setDataUser] = useState(undefined);
+  const token =
+    localStorage.getItem("ssid_login") !== undefined
+      ? localStorage.getItem("ssid_login")
+      : "";
 
-  const loginHandler = (token) => {
-    setUser({ token });
+  let data = {
+    headersApi: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    token: token,
+    data_user: dataUser,
+    setDataUser,
   };
 
   return <User.Provider value={data}>{props.children}</User.Provider>;

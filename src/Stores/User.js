@@ -1,5 +1,5 @@
 import React from "react";
 
-const User = React.createContext({ data: "ini data" });
+const User = React.createContext();
 
 export default User;

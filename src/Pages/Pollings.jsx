@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
+import { headersApi } from "../Helpers/GetUseContext";
 import Layout from "../Layouts/Layout";
 import User from "../Stores/User";
 
 const Pollings = (props) => {
-  const data = useContext(User);
   const [pollings, setPollings] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const API_KEY = process.env.REACT_APP_API_KEY_V1;
+  const data = useContext(User);
   const headersApi = data.headersApi;
   const navigate = useNavigate();
+  console.log({ headersApi });
 
   const getAllPollings = () => {
     try {
